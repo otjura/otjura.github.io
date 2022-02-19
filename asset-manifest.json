@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.980d2854.css",
-    "main.js": "/static/js/main.5b95bebb.js",
+    "main.css": "/static/css/main.1fec8afb.css",
+    "main.js": "/static/js/main.56e37437.js",
     "static/js/787.66ac3865.chunk.js": "/static/js/787.66ac3865.chunk.js",
     "static/media/kde4-desktop.png": "/static/media/kde4-desktop.9e10ae68f526bcc7f366.png",
     "static/media/chinese.jpg": "/static/media/chinese.af2eea2d39b156282b10.jpg",
@@ -32,18 +32,18 @@
     "static/media/linuxexperience.jpg": "/static/media/linuxexperience.1f7553d82a061ee8d862.jpg",
     "static/media/renamerfx-v1.4.0.png": "/static/media/renamerfx-v1.4.0.abfe0346e7530ae2e616.png",
     "static/media/gnome.png": "/static/media/gnome.e72cfffd6d6c640cc083.png",
+    "static/media/renamerfx.jpg": "/static/media/renamerfx.dbba8e39f5f68f73e678.jpg",
     "static/media/html5.png": "/static/media/html5.c1c42d614ceb9b19e584.png",
     "static/media/vaadin-logo.png": "/static/media/vaadin-logo.b8cbdcc18f956309948b.png",
     "static/media/gtk-logo.png": "/static/media/gtk-logo.84f78d71e073df943701.png",
-    "static/media/renamerfx-bw.jpg": "/static/media/renamerfx-bw.e19e64f7ace6bcfec556.jpg",
     "static/media/java-4-logo-svg-vector.svg": "/static/media/java-4-logo-svg-vector.4ad0c6e792835547f7378189f43c06f5.svg",
     "index.html": "/index.html",
-    "main.980d2854.css.map": "/static/css/main.980d2854.css.map",
-    "main.5b95bebb.js.map": "/static/js/main.5b95bebb.js.map",
+    "main.1fec8afb.css.map": "/static/css/main.1fec8afb.css.map",
+    "main.56e37437.js.map": "/static/js/main.56e37437.js.map",
     "787.66ac3865.chunk.js.map": "/static/js/787.66ac3865.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.980d2854.css",
-    "static/js/main.5b95bebb.js"
+    "static/css/main.1fec8afb.css",
+    "static/js/main.56e37437.js"
   ]
 }
