@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8b0148f4.css",
-    "main.js": "/static/js/main.37c1711a.js",
+    "main.css": "/static/css/main.3fd8934f.css",
+    "main.js": "/static/js/main.e466baf0.js",
     "static/js/787.66ac3865.chunk.js": "/static/js/787.66ac3865.chunk.js",
     "static/media/kde4-desktop.png": "/static/media/kde4-desktop.9e10ae68f526bcc7f366.png",
     "static/media/chinese.jpg": "/static/media/chinese.af2eea2d39b156282b10.jpg",
@@ -13,37 +13,30 @@
     "static/media/homerun0.png": "/static/media/homerun0.053fb3aa7cf13d50ad5d.png",
     "static/media/you-have-lisp.jpg": "/static/media/you-have-lisp.f348e8ee657f18c551e2.jpg",
     "static/media/vimrc.png": "/static/media/vimrc.418349af93f39db1962b.png",
-    "static/media/about-sea.jpg": "/static/media/about-sea.5d198ee5432e4f46b667.jpg",
     "static/media/renamerfx-v1.0.0.png": "/static/media/renamerfx-v1.0.0.96216045ed04cfc32488.png",
     "static/media/stevent.png": "/static/media/stevent.db546d055375ca332e31.png",
     "static/media/swim.png": "/static/media/swim.cbbdb6b964b8ac007782.png",
-    "static/media/portfolio-taulu.jpg": "/static/media/portfolio-taulu.ef9b7ca2322f65d10e48.jpg",
-    "static/media/writings-txt.jpg": "/static/media/writings-txt.effbced90fc4e9dfb88f.jpg",
-    "static/media/ddesign.png": "/static/media/ddesign.31afd759fdea420148d6.png",
     "static/media/renamerfx-v1.2.0.png": "/static/media/renamerfx-v1.2.0.a73fbb69bff59aa57550.png",
     "static/media/kubuntu_logo.png": "/static/media/kubuntu_logo.c49a1ee4f17aabed358d.png",
     "static/media/tray-transform.png": "/static/media/tray-transform.97bacfe193970111b273.png",
     "static/media/renamerfx-v1.1.0.png": "/static/media/renamerfx-v1.1.0.c6ebbd0a3740711dc97b.png",
     "static/media/renamerfx-v1.3.0.png": "/static/media/renamerfx-v1.3.0.f2d4133935cc3131c62b.png",
-    "static/media/webdev.jpg": "/static/media/webdev.9cce51c9bc4ce4b68612.jpg",
     "static/media/adwasmal-headerbar.png": "/static/media/adwasmal-headerbar.b06bcd2b74628f039613.png",
     "static/media/fedora.png": "/static/media/fedora.f800b2052aa1057abd19.png",
     "static/media/renamerfx-v1.5.0.png": "/static/media/renamerfx-v1.5.0.69c714b203e74441b493.png",
-    "static/media/linuxexperience.jpg": "/static/media/linuxexperience.1f7553d82a061ee8d862.jpg",
     "static/media/renamerfx-v1.4.0.png": "/static/media/renamerfx-v1.4.0.abfe0346e7530ae2e616.png",
     "static/media/gnome.png": "/static/media/gnome.e72cfffd6d6c640cc083.png",
-    "static/media/renamerfx.jpg": "/static/media/renamerfx.dbba8e39f5f68f73e678.jpg",
     "static/media/html5.png": "/static/media/html5.c1c42d614ceb9b19e584.png",
     "static/media/vaadin-logo.png": "/static/media/vaadin-logo.b8cbdcc18f956309948b.png",
     "static/media/gtk-logo.png": "/static/media/gtk-logo.84f78d71e073df943701.png",
     "static/media/java-4-logo-svg-vector.svg": "/static/media/java-4-logo-svg-vector.4ad0c6e792835547f7378189f43c06f5.svg",
     "index.html": "/index.html",
-    "main.8b0148f4.css.map": "/static/css/main.8b0148f4.css.map",
-    "main.37c1711a.js.map": "/static/js/main.37c1711a.js.map",
+    "main.3fd8934f.css.map": "/static/css/main.3fd8934f.css.map",
+    "main.e466baf0.js.map": "/static/js/main.e466baf0.js.map",
     "787.66ac3865.chunk.js.map": "/static/js/787.66ac3865.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8b0148f4.css",
-    "static/js/main.37c1711a.js"
+    "static/css/main.3fd8934f.css",
+    "static/js/main.e466baf0.js"
   ]
 }
