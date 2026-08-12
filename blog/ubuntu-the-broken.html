@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ubuntu the Broken - Blog - Otso's Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../static/favicon.ico">
+  <link rel="stylesheet" href="../static/styles.css">
+  <script src="../script/frags.js"></script>
+  <script src="../script/fun.js"></script>
+</head>
+
+<body>
+  <header-frag></header-frag>
+  <aside>
+    <bloglist-frag></bloglist-frag>
+  </aside>
+  <main>
+    <article>
+      <h1>Ubuntu the Broken</h1>
+      <figure>
+        <img src="../static/img/ubuntu.webp" alt="Ubuntu logo">
+        <figcaption>Ubuntu logo</figcaption>
+      </figure>
+      <p>Ubuntu is the distro with by far the most mindshare and presumably the most usershare of any distribution. But people should perhaps stop promoting Ubuntu and its derivatives. I have a long history of Linux usage, spanning over ten years, starting with Best Linux 2000. None of the Linux distributions have given me as many unintentional headaches as Ubuntu has given me. While I may have scratched my head a few times when playing with Gentoo, that was intentional. Things breaking randomly is unintentional. Canonical's Ubuntu will likely never bring about <span title="Year of the Linux Desktop">YOLD</span>, because it is not good enough for day-to-day usage. It fails its easy-to-use mantra on most fundamental level: stability and reliability.</p>
+      <p>Let's start with something that is far too common in Ubuntu: You update something and discover that something else is now broken. In some cases, the thing you updated is now broken. Ubuntu claims its LTS versions are stable, but they also still break from time to time for no apparent reason. This tendency of breaking is something I have experienced rarely on this decade in other user-friendly distributions. Those include Mageia, openSUSE and Fedora. How come? Most of the packages on Ubuntu are not officially supported, but <a href="http://www.pcworld.com/article/2845072/ubuntu-owncloud-and-a-hidden-dark-side-of-linux-software-repositories.html" target="_blank">come and go as they please without any interest from Canonical that they even work once they land in repositories</a>. Those are the packages in Universe and Multiverse repositories, the clear majority of packages available to Ubuntu. Only a handful, 4475 packages in 14.04 LTS to be exact, are actually maintained by Canonical (according to <a href="http://pkgs.org/" target="_blank">pkgs.org</a>). Compare that to Fedora, which maintains a whopping 32482 packages in its official main repository, all subject to same level of scrutiny. Even openSUSE supports directly 20125 packages in main alone. Looking at packages from that viewpoint, Ubuntu is the least <span title="Quality Assurance">QA'd</span> distro available. And that is not a good thing.</p>
+      <p>But mismatch between level of scrutiny packages face is only a part of the problem. Ubuntu itself is forked from Debian testing with some packages from sid the unstable. That may not be a problem in itself, but combined with differing levels of scrutiny and testing of packages therefrom causes an inherent problem with stability. The default state of Ubuntu is thus instability. It doesn't even matter much if the version you are running is LTS, as it still has roots in testing/unstable version of Debian. In fact, sometimes running an LTS can be even worse decision. Ubuntu 14.04 LTS, which is to be supported for 5 years, <a href="https://tim.siosm.fr/blog/2014/04/25/why-not-ubuntu-14.04-lts/" target="_blank">does not have a long-term support kernel</a>. That is, the kernel ticking in LTS is not supported by the global upstream developer community of thousands of developers. The responsibility rests solely on shoulders of Canonical's ability to backport and patch everything in timely fashion. Again, that is not a good thing.</p>
+      <p>And the problems don't end there. Let's go deeper! Debian self is essentially a distribution that is repackaging and testing software from upstream. Then it decides what to use in its base distribution and tries to implement it to its best ability. Curiously as a side note, my only kernel panic ever has happened with Debian stable, by the way. Twice. It is having its fingers on upstream development by second-hand approach, providing feedback and patches. Yet majority of work is done "in-house", meaning packages are patched specifically for Debian in case upstream rejects patches from Debian developers or even for ideological reasons (see: <a href="https://wiki.debian.org/Iceweasel" target="_blank">IceWeasel</a>). That process is then repeated by Canonical, further patching already uniquely Debian patched packages when necessary, such as glibs to work with Unity. It's a mess of multiple times patched software that may even end up being incompatible with the rest of the world. Not good.</p>
+      <p>Further down the rabbit hole we encounter package managers. Right now, apt is perhaps the least advanced package manager, or at least less advanced than rpm counterparts yum, dnf and zypper. While yum and zypper have enjoyed delta-updates by default for years now, apt still doesn't provide those. In addition, the dependency checking of apt is very basic compared to SAT solver heuristics zypper and dnf provides. Finally, there are differences between packaging process itself between rpm and deb, which may be cause of troubles as packages are unpacked into system. That would certainly explain, why <em>all</em> rpm-based distros in my use have been far more reliable in updating things, even when they do not have intelligent solvers for dependencies.</p>
+      <p>What I'm trying to convey here, is that Ubuntu seems to be broken to the core and breaks more every step of further development it does the moment it forks off Debian testing/sid. It has adopted a development model not suitable for producing a robust distribution. And that brittleness trickles down to numerous Ubuntu derivatives such as Mint, Zorin and Netrunner. There are just so many problems with all of those. Mint in fact has adopted its own update cycle where it attempts to further test packages from Ubuntu repositories and groups them by their safety. Layers upon layers of testing and things still just break.</p>
+      <p>Talking with other people running Linux, I am not alone with the problematic experiences. One complained that Ubuntu recently broke printing after updates, but <i>"it's just business as usual"</i>. Another said he is hesitant to upgrade his server running Ubuntu 14.04 to 14.04.1, a mere point release, simply because he "excepts some things to break". Things breaking just like that should not be a norm, something to be excepted and just sucked up. Not when there are alternatives where package breakage is not the norm. Advanced users can cope with it, but for normal user such random breakage is a big glowing red no-no. Yet Ubuntu and friends are explicitly marketed as newbie friendly distributions! Nothing is farther from the truth! Need long-term support? Go with CentOS. Nice desktop distro? Fedora, Korora, Mageia or openSUSE. Ubuntu arguably didn't even do that much to bring user-friendliness to average user. Mandrake did it first.</p>
+      <footer>2014-12-10</footer>
+    </article>
+  </main>
+  <footer-frag></footer-frag>
+</body>
+
+</html>

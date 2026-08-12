@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Projects - Otso's Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="script/frags.js"></script>
+  <script src="script/fun.js"></script>
+</head>
+
+<body>
+  <header-frag current="projects"></header-frag>
+  <main>
+    <section class="hero">
+      <!--<projects-frag></projects-frag>-->
+      <h2 class="hero-tagline"><i>Things I've built aside professional work</i></h2>
+      <h1>pkglist</h1>
+      <h2>The Problem</h2>
+      <p>You have programs installed from distro repos with rpm, then more from flatpaks, then from node, a little bit from bun and so on, don't you wish you could see all of them in one place and really figure out what is eating all your disk space?</p>
+      <p>Checking each source individually and trying to deduce what exactly is taking up so much space from dependency descriptions is so time consuming it's </p>
+      <h2>The Solution</h2>
+      <p>Clean TUI meaning terminal user interface application that reads and lists all of the packages in one application, accounting for dependencies and dependees. Doubles as a CLI tool for those who love grepping and piping to text files.</p>
+      <p>Follows obviosity rule of interaction design; all the actions available at any given moment are always visible. Don't have to remember what button does what. Made with Rust for performance, smaller binary, and easier build process (thanks cargo).</p>
+      <p>Licensed with GPLv3.</p>
+      <a href="https://github.com/otjura/pkglist">it's on GitHub</a>
+      
+      <hr>
+
+      <h1>RenamerFX</h1>
+      <h2>The Problem</h2>
+      <p>You have a lot of files to rename and many different operating systems to work with and can't be arsed to scribble scripts all the time.</p>
+      <h2>The Solution</h2>
+      <p>Cross-platform graphical renamer. Simple as.</p>
+      <p>Made with JavaFX as a bit of a proof-of-concept exercise on using familiar separation of logic and UI, with UI presentation <a href="https://github.com/otjura/RenamerFX/tree/main/src/main/resources">entirely</a> written in FMXL, a JavaFX HTML-like XML syntax with its own CSS dialect.</p>
+      <p>GPLv3.</p>
+      <a href="https://github.com/otjura/RenamerFX">also on GitHub</a>
+    </section>
+  </main>
+  <footer-frag></footer-frag>
+</body>
+
+</html>

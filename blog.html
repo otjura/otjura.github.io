@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Otso's Homepage</title>
+  <title>Blog - Otso's Homepage</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link rel="icon" href="static/favicon.ico">
@@ -12,16 +12,12 @@
 </head>
 
 <body>
-  <header-frag current="home"></header-frag>
+  <header-frag current="blog"></header-frag>
   <main>
-    <div id="main-hero">
-      <h1>Hi I'm Otso and I've built & seen a lot so to put it simply</h1>
-      <p>Efficiency always wins.</p>
-      <p>Content is the king.</p>
-      <p>Visuals matter.</p>
-      <p>UX is not UI.</p>
-      <a href="blog.html">more on my blog →</a>
-    </div>
+    <section class="hero">
+      <h2 class="hero-tagline"><i>Musings on the software and the hardware</i></h2>
+      <bloglist-frag p="blog"></bloglist-frag>
+    </section>
   </main>
   <footer-frag></footer-frag>
 </body>

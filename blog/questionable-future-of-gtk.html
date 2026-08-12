@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Questionable Future of GTK - Blog - Otso's Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../static/favicon.ico">
+  <link rel="stylesheet" href="../static/styles.css">
+  <script src="../script/frags.js"></script>
+  <script src="../script/fun.js"></script>
+</head>
+
+<body>
+  <header-frag></header-frag>
+  <aside>
+    <bloglist-frag></bloglist-frag>
+  </aside>
+  <main>
+    <article>
+      <h1>Questionable Future of GTK</h1>
+      <figure>
+        <img src="../static/img/gtk-logo.webp" alt="GTK logo with question mark">
+        <figcaption></figcaption>
+      </figure>
+      <p>I used GNOME 3.x desktops for a long time. It was initially the deciding factor leading me to switch over to Fedora. I still think GNOME is quite misunderstood and if people would give it a go on platform that isn't broken, many opinions about it would certainly change. With broken platform I am referring to Ubuntu, which doesn't ship with systemd, meaning some aspects of GNOME are missing. Ubuntu also ships non-standard borderline broken GTK libraries patched to make Unity work with no regard to other desktops. GNOME is brilliant in its own way, taking the approach to minimalism and usability on both touchscreen and keyboard+mouse with single GUI farther than others. GNOME has advanced a lot from the mess it was in 3.2 days.</p>
+      <p>But GNOME project did make horrible miscalculations in its project handling. They disregarded opinions of others, blindly pursuing their own vision. That isn't a bad thing in itself, but nevertheless GTK started ending up little by little as GNOME-exclusive toolkit not many were willing to use. The documentation was lacking. Constant changes to API wrecked nerves of other not affiliated with the GNOME project. Little by little GNOME's community mismanagement eradicated the developer base of GTK. Userbase is following, with only a handful of distributions providing full GNOME experience as default. Like Steve Ballmer said: "Developers, developers, developers!</p>
+      <p>Where is GTK now? It has morphed into de facto GNOME Tool Kit. That's all. The only other interface projects still using it are Cinnamon, Mate and XFCE.</p>
+      <p>Meanwhile Qt usage has risen rapidly. Submerge the diving application has been ported to Qt. LXDE is being ported to Qt under name LXQt and has merged with Razor-Qt. Ubuntu's next-generation Unity 8 is built with Qt instead of GTK techonologies now. Jolla's Sailfish is running on Qt. KDE Plasma is Qt as it has always been and now covers desktop, mobile and living room with same framework.</p>
+      <p>KDE also is in transition phase from Qt4 into Qt5, with more agile approach to development with massively monolithic Software Compilations being separated into libraries, desktop and applications developed separately. Plasma Mobile, Sailfish and Unity seek to collaborate on building a common unified API which can be shared with Qt applications. GTK's existence on both entertainment and mobile devices is zero.</p>
+      <p>Then comes the two big obstacles shortly in the future: Wayland and Mir display servers. While GNOME is currently (2014) most Wayland-ready desktop around, it is alone. XFCE has no plan to port to GTK3, let alone on Wayland. Its last stable release was in 2011 for reference. Mate is moving slowly with migration to GTK3, but Wayland waters are murky. Wildly popular Cinnamon is deviating from common GNOME base more and more with every release. Those projects also lack manpower, something which KDE has in plenty.</p>
+      <p>As it seems, GNOME will become the oddball desktop in the near-future, being the only non-Qt desktop capable of running on it. The last bastion. In open source world, <a href="http://blogs.gnome.org/otte/2012/07/27/staring-into-the-abyss/" target="_blank">being alone is never good</a>. As X11 finally fades into history, I don't see why anyone would use a highly particular toolkit utilized by only one desktop, which itself fails to gain large adoption. <span title="KDE was launched in 1996 and for a brief moment everything was Qt. GNOME followed three years later.">2016 will be the new 1996.</span> <br></p>
+      <footer>2015-07-23</footer>
+    </article>
+  </main>
+  <footer-frag></footer-frag>
+</body>
+
+</html>

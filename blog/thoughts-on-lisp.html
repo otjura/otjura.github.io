@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Thoughts on Lisp - Blog - Otso's Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../static/favicon.ico">
+  <link rel="stylesheet" href="../static/styles.css">
+  <script src="../script/frags.js"></script>
+  <script src="../script/fun.js"></script>
+</head>
+
+<body>
+  <header-frag></header-frag>
+  <aside>
+    <bloglist-frag></bloglist-frag>
+  </aside>
+  <main>
+    <article>
+      <h1>Thoughts on Lisp</h1>
+      <figure>
+        <img src="../static/img/Lisp-Machine-Hackers.webp" alt="Ancient Lisp hackers">
+        <figcaption>The Lisp Machine</figcaption>
+      </figure>
+      <p>I spent much of summer 2015 studying Common Lisp. Primary reason to learn it had to do with <b>power</b>. In this context, power means programming language's ability to do things that are not easy or even possible in other languages. Think of power as expressiveness plus abstraction. Secondary reasons were Lisp's place in hacker lore as language of legends, its use in computer science since 1950's as explorative language, and much of the best literature on topic of AI programming using Lisp (<a href="http://aima.cs.berkeley.edu/lisp/doc/overview.html" target="_blank">including AIMA</a>). Lisp as in Lisp family of languages, not only Common Lisp. I'm referring to Common Lisp as Common Lisp and Lisp in general as Lisp, although Common Lisp, which was devised in 1984 and refined into ANSI standardized ANSI Common Lisp in 1994, is the most direct descendant of original Lisp.</p>
+      <p>It was the secondary reasons which led me to discover the primary reason. I learned of AI Winter during my bachelor's thesis writing process, which contributed to bankruptcy of the <a href="http://c2.com/cgi/wiki?LispMachine" target="_blank">Lisp machine</a> companies in the 1980's after lavish funding for various AI companies ended because of various reasons. Think of AI Winter as dotcom-bubble of 1980's. Anyways, something called Lisp was used to program AI applications and was so renowned, that there were startups and corporations building entire systems with specialized hardware architectures just to run Lisp effectively. And that their entire operating system was made with Lisp. And that everything in operating system could be edited in runtime without reboots. Considering that we still can't do all that in modern PC systems sparked my interest.</p>
+      <p>One thing in AI research of the early days struck me. They advanced the field a lot. All the ground laying work like perceptron, universal solvers and expert systems were done already by 1960's with computers like PDP-10 used in legendary MIT AI Laboratory. They had limited computing resources, no fancy IDE's to work with, and most importantly: before 1970's they didn't have C or UNIX. I had up until that point considered those two as fundamental necessities. I now understood they weren't. Early rapid success had to have something to do with the language they were using. It wasn't C, but Lisp. I started researching that, and it was from that point forward I started discovering the power aspect of it. My hunch was quite correct.</p>
+      <h2><a id="poer" href="#power" class="secondary"># Power of Lisp</a></h2>
+      <p>Lisp has unique power. Only Lisp family of programming languages have it. It's called homoiconicity and is the source of its power. Program source code you see is what compiler processes. WYSIWCP. Lisp is acronym for list processing. When you create a Lisp program, you are creating a bunch of nested lists. And you can use those lists as expressions in uniform way, and they behave in uniform way. There is no so-called boiler-plate code. Zero. Some even say that Lisp doesn't really have syntax at all, but I digress. When I tinkered with CLOS, the Common Lisp Object System, it all clicked together in my head. Consider the following: in Java, you must define getter and setter methods to interact with instantiated object data in predictable way. Perhaps an exquisite toString function overriding the default Object.toString. In Common Lisp, you don't have to define those. You return value of instantiated object in the same way you return value of any other symbol. Every symbol returns itself as default return value. And then you can interact directly with that return value. In following examples, &gt;&gt; means prompt.</p>
+      <code>
+    <br>
+    (defclass book ()<br>
+    &nbsp;&nbsp;((title :accessor title :initarg :title)<br>
+    &nbsp;&nbsp;(author :accessor author :initarg author)))<br>
+    &gt;&gt; (defparameter mybook (make-instance 'book :title "Old Hat" :author "Billy"))<br>
+    &gt;&gt; (setf (slot-value mybook 'author) "Bella")<br><br>
+  </code>
+      <p>In that example we made class named book with slots for title and author. Then we instantiated book with title Old Hat and author as Billy and define it as parameter named book. But oh no! Author was wrong, so we set it to Bella. Now compare to following where we def foo as 42 and change it to 13...</p>
+      <code>
+    <br>
+    &gt;&gt; (defparameter foo 42)<br>
+    &gt;&gt; (setf foo 13)<br><br>
+  </code>
+      <p>...and the following where we def bar as list (1 7 3) and change 7 to 2...</p>
+      <code>
+    (defparameter bar '(1 7 3))<br>
+    &gt;&gt; (setf (cadr bar) 2)<br><br>
+  </code>
+      <p>Are you starting to see a pattern here? We are defining various things the same way from objects to simplest integers. And we are changing the return values in the same way. There is zero confusion. If you are wondering why the hell defparameter is so long, it's because it's rarely used, usually only for global values and symbol put into earmuffs like this *foo* to signal it as such. Normally lispers use let expression to maintain closure inside a function (just three letters, much better).</p>
+      <p>For sake of demonstration, this is how to do the bar example in typical Java (granted, data structures are different here, but you get the general point):</p>
+      <code>
+    private ArrayList&lt;Integer&gt; bar = new ArrayList&lt;&gt;();<br>
+    bar.add(1); <br>
+    bar.add(7); <br>
+    bar.add(3);<br>
+    bar.set(1, 2);<br><br>
+  </code>
+      <p>Not so long now, eh? But yeah, it could be shorter.</p>
+      <p>Powers outside syntax again flow from the simplicity of the syntax and homoiconicity. Remember how I said that people of old days had amazing machines with ability to tweak entire Lisp operating system at runtime? You can relive the past right now! Start Lisp environment such as Emacs with SLIME. Write a program in Common Lisp that loops and start it from REPL, the Lisp command prompt. Then, redefine symbols and functions to your hearts content, reloading them with C-c C-c command while the program is running. Yes, program behavior changes on the fly. REPL itself is just acronym for Read-Eval-Print-Loop. Guess how you implement your own REPL? You do it literally with following:</p>
+      <code>
+    (loop (print (eval (read))))
+    <br><br>
+  </code>
+  <h2><a id="variants" href="#variants" class="secondary"># Problem of Lisp variants</a></h2>
+      <p>Which leads us to the next section: problems with Lisp. Once I started getting into Common Lisp, I started getting into Lisp in general. And here there be dragons. First thing when I ventured into networking side of things was that despite Common Lisp being quite large with 927 symbols, none deal with sockets. They are missing from the ANSI standard, which is now 21 years old and never revised since. Implementation of lot of things not specified in standard vary by implementation. Things in SBCL are totally different to CLISP when it comes to sockets, so I had to do some reading of SBCL manual in addition to book I was reading on Common Lisp which uses CLISP (Conrad Barski's excellent Land of Lisp). Well, standard doesn't need to define everything, sure, but that led to late-night reading as to why the standard is so damn old. Surely minor advances like the whole Internet thingy would warrant some updates to spec, even if the language is most likely most powerful in existence. When you start digging into these kinds of things, you are bound to discover something very ugly. And I did just that.</p>
+      <p>Basically, the whole standardization effort of Common Lisp was initialized by US Department of Defense, because it was funding whole lot of research that was going on and there were so many lispers around. Thanks to pre-internet era, researchers were using pretty much local Lisp dialects specific to their area, largely incompatible and unportable, which had been cooking in their labs with myriad of different hardware and operating systems for decades. Thus, DoD decreed that for funding to continue, all the interest groups need to gather and create uniform standard Lisp. Too bad there was already dialect called Standard Lisp, so what became was Common Lisp. The standardization process was long and overtly political, with everyone wanting to maintain some compatibility with their own dialect or have it work like their dialect. In the first round Americans even forgot that they are not the only lispers on planet, forgetting to invite Europeans and Japanese into the standardization process. This was remedied later, but the damage was done and yet another dialect was born, called EuLisp. Arguably the largest damage that got done during this process was not defining Common Lisp as Lisp-1 type, which led to Great Schism only comparable in size to separation of Catholic and Orthodox churches. Common Lisp decided to remain as Lisp-2, and this was mostly strong armed by the Lisp Machine corporations such as Symbolics, because their dialects were Lisp-2 so obviously their business would suffer. Keep in mind that they went out of business very shortly thereafter anyways.</p>
+      <p>So, what are Lisp-1 and Lisp-2? It means differences in namespace. Lisp-1 has one namespace for all symbols, shared between functions and variables. That means that you can't have function named list and variable named list in the same scope. Lisp-2 has two namespaces for symbols, one for functions and one for variables. You can now have function list and variable list. Already in 1970's there emerged a dialect called Scheme which had only one namespace. Benefits of one namespace lie in cleaner code and even simpler interaction with the language, which in turn theoretically allows even more powerful expressions than Lisp-2. I myself can't say much on the matter except for the immediately obvious cleanliness part due to some exposure to Scheme but looking at other Lisps it might have some truth in it. Clojure, which is perhaps the highest profile and latest Lisp, is Lisp-1 type. So is EuLisp and obviously all the myriad of Scheme implementations which are borderline dialects (Racket, Chicken, Bigloo...). Obviously, lots of very smart people have deemed Lisp-1 as a superior solution. That leaves Common Lisp pair-dancing with Emacs Lisp as the only Lisp-2 types. Curiously, both have their roots in times before Scheme, which make them look a bit like ancient relics. If Common Lisp had been made as Lisp-1 during the standardization process, I have no doubts that Common Lisp usage would be higher. Now, I must stress that multiple namespaces are not in any way a bad thing. On contrary, C programmers struggle with single namespace. It is entirely possible that single namespace is a dead-end, a groovy 70's fad which Scheme adapted from C. In any case, there was a schism, and Common Lisp is less clean. Enter the next problem.</p>
+      <h2><a id="standards" href="#standards" class="secondary"># Frozen standard inevitably morphs into no standards</a></h2>
+      <p>Common Lisp has implementations, roughly aimed at different things. Thanks to apparent end of standardization process once it was finished in 1994, they implement a lot of things differently. Most recommended implementation is SBCL due to high performance. Different implementations are not that bad of a thing, since all languages have them (think GCC vs CLANG, Oracle JDK vs Open JDK etc.). It's that standards committee is apparently either dead or in cryostasis, and the longer the spec is not updated, the farther implementations start to drift, making updating the standard very long process with lots of compromises (sound familiar?). Scheme and Clojure are a lot more active in that regard, with latest Scheme spec R7RS published 2013 and latest Clojure four days ago (version 1.8, 2016-01-19). That means that for someone wanting to learn Lisp, there is no single Lisp to learn from: which dialect, which implementation? To make things worse, there is that serious technical rift between Common Lisp and the rest due to great Lisp-1 vs. Lisp-2 schism, which seems to be won by the former judging by the apparent success of Clojure. Hell, even GNU endorses Guile, a Scheme, as the official scripting language. It's like trying to learn how to bicycle in a candy-store while trying to decide candy for the evening. That is, if you are aware of this, which you dear curious reader now are. If you simply plunge into learning some Lisp like I did, then you will be ok, although after learning of all this you may have some serious afterthoughts (I know I had).</p>
+      <p>To further increase difficulty of deciding what to learn, Common Lisp is widely held as most practical choice for real-life programming. Greenspun's Tenth Rule states that "Any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of Common Lisp." That means that to do same things Common Lisp has readily built-in or can express effortlessly, C developers must put in a lot of effort and end-result will still be substandard. This also applies to other languages, including Scheme. I've been asking around, and indeed Schemers tend to replicate things that are in Common Lisp in their programs, but this is simply because Common Lisp is much larger. Scheme R7RS specification is 88 pages, while Common Lisp CLtL2 is 1096 pages. Kind of like comparing C to C++, so it is not surprising. A paining what-if scenario is imagining if Common Lisp had become Lisp-1, that is, practically a very large Scheme for very serious and practical uses. Then the comparison between C and C++ would be direct, as Common Lisp and Scheme would be compatible in the most fundamental level. Then there would essentially be only the choice of large or small Lisp to hack with. Then again, we still don't have long enough hindsight to decide if Lisp-1 indeed is truly superior or historical error. There really is no consensus on that. But there is the rift.</p>
+      <p>On the bright side, understanding basic operating principle of either plus the main difference makes switching between Scheme and Common Lisp very trivial. A few examples:</p>
+      <code>
+    <table>
+      <tbody>
+        <tr>
+          <td>COMMON LISP</td><td>SCHEME</td></tr>
+        <tr>
+          <td>
+            (defun pow (x) <br>
+            &nbsp;&nbsp;(* x x))
+          </td>
+          <td>
+            (define (pow x) <br>
+            &nbsp;&nbsp;(* x x))<br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            (defvar x 5)<br>
+          </td>
+          <td>
+            (define x 5)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </code>
+      <p>The largest difference in syntax is in handling of functions that are not in beginning of list due to different approaches to namespace. In Common Lisp, you need to explicitly state with #' that what you are calling is a function in places where program excepts variable. These are the same, first two are Common Lisp, first line without syntactic sugar and then all sugar, same with last two Scheme examples:</p>
+      <code>
+    COMMON LISP<br>
+    (map (quote list) (function +) (list 1 2) (list 3 5))<br>
+    (mapcar #'+ '(1 2) '(3 5))<br><br>
+    SCHEME<br>
+    (map + (list 1 2) (list 3 5))<br>
+    (map + '(1 2) '(3 5))<br><br>
+  </code>
+      <p>These differences give Scheme a certain pleasant airy feel to it compared to Common Lisp. It also makes building higher-order functions easier and makes the look of program more consistent. Then again, the airy feel comes with price: you can't give variables simple names like list is the classic example, and generally the space for functions and variables diminishes rapidly the larger the application gets. Other caveat is readability. While less pleasant looking thanks to that ugly #', you can spot functions immediately at a glance. There are always two sides to the coin.</p>
+      <p>It should be noted, that while Scheme was devised by two life-long academics as research and teaching language, Common Lisp evolved over decades of use by scientists, industry and military. Notably parallel with Scheme before and after standardization process. It is one seriously battle-hardened language. There may be more to the story of why it is Lisp-2 than just "stubborn greedy companies" which was my initial thought. Jury is still out on the matter, and it might be never resolved. Scheme has hygienic macros, Lisp has true macros. Scheme is restricted in namespace, Lisp is not (and can create new ones trivially). Scheme has symbol case sensitivity, Lisp doesn't. Even now, there are also <a href="https://www.youtube.com/watch?v=8X69_42Mj-g" target="_blank">very smart people</a> who make a conscious and well-informed decision to make new implementations of Common Lisp instead of Scheme for their needs. Finally, Common Lisp is simply great fun. It's dead simple, powerful and just reading about its history is exciting. In a sense, it is the eternal programming language.</p>
+      <p>In case you read this entire thing, I might as well give reading recommendations. As a result, from being battle-hardened programming language with deep roots and with exceptional capabilities even today, it has excellent literature available.</p>
+
+      <h4>Books</h4>
+      <ul>
+        <li>Common Lisp: A Gentle Introduction to Symbolic Computation (1990)</li>
+        <li>Let Over Lambda (2008)</li>
+        <li>Practical Common Lisp (2005)</li>
+        <li>On Lisp (1993)</li>
+        <li>ANSI Common Lisp (1996)</li>
+        <li>Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp (1992)</li>
+        <li>Land of Lisp (2011)</li>
+      </ul>
+      <br>
+
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="http://www.paulgraham.com/avg.html" target="_blank">Beating the Averages</a></li>
+        <li><a href="https://web.archive.org/web/20070407230302/http://bc.tech.coop/blog/060118.html" target="_blank">Lisp is for Entrepreneurs</a></li>
+        <li><a href="http://www.loper-os.org/?p=69" target="_blank">Where Lisp Fails: at Turning People into Fungible Cogs</a></li>
+        <li><a href="http://www.randomhacks.net/2005/12/03/why-ruby-is-an-acceptable-lisp/" target="_blank">Why Ruby is an acceptable Lisp</a></li>
+        <li><a href="http://locklessinc.com/articles/why_lisp_failed/" target="_blank">Why Lisp Failed</a></li>
+        <li><a href="http://www.winestockwebdesign.com/writings/Lisp_Curse.html" target="_blank">The Lisp Curse</a></li>
+      </ul>
+
+      <footer>2016-01-23</footer>
+    </article>
+  </main>
+  <footer-frag></footer-frag>
+</body>
+
+</html>

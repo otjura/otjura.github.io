@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Adventures with Kubuntu 15.04 PPA's - Blog - Otso's Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../static/favicon.ico">
+  <link rel="stylesheet" href="../static/styles.css">
+  <script src="../script/frags.js"></script>
+  <script src="../script/fun.js"></script>
+</head>
+
+<body>
+  <header-frag></header-frag>
+  <aside>
+    <bloglist-frag></bloglist-frag>
+  </aside>
+  <main>
+    <article>
+      <h1>Adventures with Kubuntu 15.04 PPA's</h1>
+      <figure>
+        <img src="../static/img/kubuntu_logo.webp" alt="Kubuntu logo">
+      </figure>
+      <p>Sometimes, there comes so many mishaps in a row that instead of pulling out your hair, you just can't help but laugh. This is an adventure I started jotting down the moment I realized everything is going straight to hell, laughing all the way with bloodshot eyes in the middle of the night. Starting point is rather fresh Kubuntu 15.04 installation with latest Plasma desktop pulled from Kubuntu PPA. So it goes:</p>
+      <p>I decided to try the LxQt 0.9.0, which has a PPA repository for Ubuntu. After adding the PPA, I naturally proceeded to install it all. Then, without any warning from apt, the KDE network manager was suddenly marked as "broken". Network stopped working right there. Caring little, I logged out, assuming I could just login to LxQt now and fix it by reinstalling the package. Little did I know! LxQt installation had apparently failed as well! Thus I could no longer connect to WiFi.</p>
+      <p>Well, off with me to brush up almost forgotten skills of command-line network management. After dabbling for a while with iwconfig, I deemed the attempt hopeless and too time consuming. Network manager really exists for a reason, it does. Trying to connect to WPA2 secured network with iwconfig is just too much effort. Luckily, my X220 has a proper LAN port, so I fetched a LAN cable and decided to purge LxQt and fix my KDE. Nope! For some reason, the computer now couldn't upkeep the connection. It closed after a few seconds, resulting in yet another failure. Something like that hasn't happened to me on wired connection on Linux ever. <i>EVER!</i> sudo ifconfig eth0 up and... nothing. Nothing apparently happened. Absolutely nothing. Something was horribly wrong now for no good reason (except somehow missing nm obviously, but overriding it with ifconfig has worked <i>before</i>). sudo dhclient, then. Now we are talking, I got things going on wireless side.</p>
+      <p>Then in my folly and deadly curiosity, I decided to install and test the upcoming Unity 8 while at it. This move apparently broke almost the entire KDE. In addition, switching to lightdm didn't play out so well. I was still in good ol' sddm, and could only login to my broken Plasma desktop. Luckily krunner was working while everything in panel was broken and desktop was black and void. I finally got all set. Or so I thought. Now as I rebooted, the xfce(??) lightdm flashed by, while it just moments ago didn't show up despite telling systemctl to exclusively use it.</p>
+      <p>And thus all screens went blank. Tried to unplug other monitor. That was not the problem, still blank. Tried to use one of tty's. No dice. System didn't let me to enter tty! Screen still blank. Reboot, nothing. At this point, I had no other option than to reinstall the entire system. Ahh, luckily it happens fast, and my /home is obviously separate partition. Wipe everything, continue with old configs, takes ten minutes on SSD. Now that things worked and I had promptly decided to return to a more robust distro anyways for good, I decided to play around a little more. So I installed Ubuntu proper on top of Kubuntu, sudo apt install ubuntu-desktop. Now mouse cursor is switching between Breeze and DMZ depending on underlying application like mazed epileptic rat in meth. Meanwhile in Unity, ibus stubbornly refused to co-operate with me, showing sunpinyin as a choice but nothing really happened when selecting it. I need my pinyin input, please. Installing XFCE 4.12 gave more laughs, as for some reason it decided to include its own tray area and also Unity's tray. I don't even...</p>
+      <h2>Reasons</h2>
+      <p>Kubuntu 15.04 was the first Kubuntu release with KDE 5 Plasma Desktop. <a href="post-mortem-of-kde4.html">I was very optimistic about it after the catastrophe of KDE 4</a>. My hopes and dreams: crushed.</p>
+      <footer>2015-05-14</footer>
+    </article>
+  </main>
+  <footer-frag></footer-frag>
+</body>
+
+</html>
